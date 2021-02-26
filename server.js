@@ -14,6 +14,10 @@ app.use(
   })
 );
 
+app.get('/', async function(req, res, next) {
+  res.json({ status: 'SUCCESS', message: 'I\'m Alive!' });
+})
+
 app.get('/api/v1/movies', async function (req, res, next) {
   res.json({ status: 'SUCCESS', movies: movies.getMovies() });
 });
