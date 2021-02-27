@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const movies = require('./movies');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -18,8 +18,8 @@ app.get('/', async function(req, res, next) {
   res.json({ status: 'SUCCESS', message: 'I\'m Alive!' });
 })
 
-app.get('/api/v1/movies', async function (req, res, next) {
-  res.json({ status: 'SUCCESS', movies: movies.getMovies() });
+app.get('/api/v1/movies/:email', async function (req, res, next) {
+  res.json({ status: 'SUCCESS', movies: movies.usaMovies });
 });
 
 app.listen(port, () => {

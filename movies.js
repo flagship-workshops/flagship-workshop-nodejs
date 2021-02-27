@@ -13,23 +13,18 @@ const usaMovies = [
     }
 ]
 
-// const internationalMovies = [
-//     {
-//         title: "Skyfall",
-//         releaseYear: 2012,
-//         rating: "PG-13",
-//         country: "United Kingdom"
-//     }
-// ]
+const internationalMovies = [
+    {
+        title: "Skyfall",
+        releaseYear: 2012,
+        rating: "PG-13",
+        country: "United Kingdom"
+    }
+]
 
-// const allMovies = usaMovies.concat(internationalMovies);
+const allMovies = usaMovies.concat(internationalMovies);
 
 module.exports = {
-    getMovies: function () {
-        // return allMovies;
-        return usaMovies;
-    },
-    // getUSAMovies: function () {
-    //     return usaMovies;
-    // }
+    usaMovies: usaMovies,
+    allMovies: allMovies
 };
