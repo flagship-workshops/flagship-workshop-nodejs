@@ -30,7 +30,7 @@ app.get('/', async function(req, res, next) {
 
 app.get('/api/v1/movies/:email', async function (req, res, next) {
   var treatment = client.getTreatment(req.params.email, 'movie_filter');
-  console.log(treatment);
+  console.log('treatment: ' + treatment);
 
   res.json({ 
     status: 'SUCCESS', 
