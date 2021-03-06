@@ -1,5 +1,5 @@
 const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
-
+const splitConfig = require('./split.config');
 const express = require('express');
 const cors = require("cors");
 const bodyParser = require('body-parser');
@@ -7,7 +7,7 @@ const movies = require('./movies');
 
 var factory = SplitFactory({
   core: {
-    authorizationKey: 'localhost' // update to real authorization key
+    authorizationKey: splitConfig.authorizationKey
   }
 });
 
@@ -29,12 +29,12 @@ app.get('/', async function(req, res, next) {
 })
 
 app.get('/api/v1/movies/:email', async function (req, res, next) {
-  var treatment = client.getTreatment(req.params.email, 'movie_filter');
+  var treatment = client.getTreatment(req.params.email, splitConfig.treatmentName);
   console.log('treatment: ' + treatment);
 
   res.json({ 
     status: 'SUCCESS', 
-    movies: (treatment === 'INTERNATIONAL') ? movies.allMovies : movies.usaMovies 
+    movies: (treatment === splitConfig.intlTreatment) ? movies.allMovies : movies.usaMovies 
   });
 });
 
